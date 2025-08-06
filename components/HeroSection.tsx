@@ -2,35 +2,69 @@
 
 import { ArrowRight, PlayCircle, Settings, Zap, Shield } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { useEffect, useRef } from 'react'
 
 export default function HeroSection() {
   const { t } = useLanguage()
+  const videoRef = useRef<HTMLVideoElement>(null)
+  
+  useEffect(() => {
+    const video = videoRef.current
+    if (video) {
+      // 비디오가 로드되면 재생 시도
+      const playVideo = async () => {
+        try {
+          await video.play()
+          console.log('Video started playing successfully')
+        } catch (error) {
+          console.log('Auto-play prevented:', error)
+        }
+      }
+      
+      // 비디오 메타데이터가 로드된 후 재생 시도
+      video.addEventListener('loadedmetadata', playVideo)
+      
+      // 컴포넌트 언마운트 시 이벤트 리스너 제거
+      return () => {
+        video.removeEventListener('loadedmetadata', playVideo)
+      }
+    }
+  }, [])
   
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Video Background */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/images/industrial-hero-poster.jpg"
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      >
-        <source src="/videos/kieng_video1.mp4" type="video/mp4" />
-        {/* Fallback for browsers that don't support video */}
-      </video>
-      
       {/* Fallback Background Image */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-secondary-900 z-0"></div>
       
+      {/* Video Background */}
+      <video
+        ref={videoRef}
+        autoPlay={true}
+        muted={true}
+        loop={true}
+        playsInline={true}
+        controls={false}
+        preload="metadata"
+        className="absolute inset-0 w-full h-full object-cover z-10"
+        onError={(e) => console.error('Video failed to load:', e)}
+        onLoadStart={() => console.log('Video loading started')}
+        onCanPlay={() => console.log('Video can play')}
+        onLoadedData={() => console.log('Video loaded data')}
+        onPlay={() => console.log('Video started playing')}
+        style={{ objectFit: 'cover' }}
+      >
+        <source src="/videos/kieng_video1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
       {/* Video Overlay */}
-      <div className="absolute inset-0 bg-black/50 z-10"></div>
+      <div className="absolute inset-0 bg-black/50 z-20"></div>
       
       {/* Gradient Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-20"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-30"></div>
       
-      <div className="container-custom relative z-30">
+      <div className="container-custom relative z-40">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left animate-slide-up">
