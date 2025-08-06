@@ -17,8 +17,7 @@ export default function HeroSection() {
         poster="/images/industrial-hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="/videos/industrial-hero.mp4" type="video/mp4" />
-        <source src="/videos/industrial-hero.webm" type="video/webm" />
+        <source src="/videos/kieng_video1.mp4" type="video/mp4" />
         {/* Fallback for browsers that don't support video */}
       </video>
       
