@@ -1,6 +1,6 @@
 'use client'
 
-import { Wrench, Cog, Cpu, Factory, ArrowRight, CheckCircle } from 'lucide-react'
+import { Wrench, Cog, Cpu, Factory, ArrowRight, CheckCircle, Droplets } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import Link from 'next/link'
 
@@ -9,20 +9,15 @@ export default function ServicesSection() {
   
   const services = [
     {
-      icon: Factory,
-      title: t('services.filter.title'),
-      description: t('services.filter.desc'),
-      features: ['Bag Filter', 'Activated Carbon Filter', 'Custom Design'],
-      color: 'bg-primary-500'
-    },
-    {
-      icon: Cog,
+      id: 'tank',
+      icon: Droplets,
       title: t('services.tank.title'),
       description: t('services.tank.desc'),
       features: ['Various Sizes', 'Chemical Resistant', 'Quality Assurance'],
       color: 'bg-accent-500'
     },
     {
+      id: 'ion',
       icon: Cpu,
       title: t('services.ion.title'),
       description: t('services.ion.desc'),
@@ -30,6 +25,7 @@ export default function ServicesSection() {
       color: 'bg-secondary-600'
     },
     {
+      id: 'env',
       icon: Wrench,
       title: t('services.env.title'),
       description: t('services.env.desc'),
