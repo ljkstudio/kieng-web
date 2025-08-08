@@ -21,6 +21,9 @@
 - **Font**: Inter (Google Fonts)
 - **Internationalization**: React Context API
 - **State Management**: React Hooks
+- **Database**: PostgreSQL
+- **ORM**: Prisma
+- **Containerization**: Docker & Docker Compose
 
 ## 📦 설치 및 실행
 
@@ -28,6 +31,7 @@
 
 - Node.js 18.17.0 이상
 - npm 또는 yarn
+- Docker 및 Docker Compose
 
 ### 설치
 
@@ -36,12 +40,53 @@
 npm install
 ```
 
-2. 개발 서버 실행:
+2. 환경 변수 설정:
+```bash
+# .env 파일 생성
+DATABASE_URL="postgresql://postgres:162375@localhost:5432/kieng_db"
+NODE_ENV=development
+```
+
+3. PostgreSQL 데이터베이스 시작:
+```bash
+# Docker Compose로 PostgreSQL 실행
+npm run docker:up
+
+# 또는 직접 실행
+docker-compose up -d postgres
+```
+
+4. 데이터베이스 스키마 생성:
+```bash
+# Prisma 클라이언트 생성
+npm run db:generate
+
+# 데이터베이스 스키마 적용
+npm run db:push
+```
+
+5. 개발 서버 실행:
 ```bash
 npm run dev
 ```
 
-3. 브라우저에서 [http://localhost:3000](http://localhost:3000) 접속
+6. 브라우저에서 [http://localhost:3000](http://localhost:3000) 접속
+
+### 데이터베이스 관리
+
+```bash
+# 데이터베이스 스키마 변경 시
+npm run db:migrate
+
+# Prisma Studio로 데이터베이스 확인
+npm run db:studio
+
+# Docker 컨테이너 중지
+npm run docker:down
+
+# Docker 로그 확인
+npm run docker:logs
+```
 
 ### 빌드
 
@@ -60,7 +105,15 @@ kieng-web-next/
 ├── app/
 │   ├── globals.css
 │   ├── layout.tsx
-│   └── page.tsx
+│   ├── page.tsx
+│   ├── api/
+│   │   └── quote/
+│   │       └── route.ts
+│   ├── about/
+│   ├── services/
+│   ├── products/
+│   ├── contact/
+│   └── quote/
 ├── components/
 │   ├── Navigation.tsx
 │   ├── HeroSection.tsx
@@ -68,6 +121,13 @@ kieng-web-next/
 │   ├── AboutSection.tsx
 │   ├── ContactSection.tsx
 │   └── Footer.tsx
+├── lib/
+│   └── prisma.ts
+├── prisma/
+│   └── schema.prisma
+├── contexts/
+│   └── LanguageContext.tsx
+├── docker-compose.yml
 ├── tailwind.config.js
 ├── next.config.js
 └── package.json
@@ -154,9 +214,9 @@ const { language, setLanguage, t } = useLanguage()
 
 ## 📞 문의
 
-- **이메일**: info@kieng.co.kr
-- **전화**: 031-123-4567
-- **주소**: 경기도 수원시 영통구 광교중앙로 123, 4층
+- **이메일**: bhkim@kieng.co.kr
+- **전화**: 031-987-6127
+- **주소**: 경기도 김포시 대곶면 대곶로 382번길 122
 
 ---
 

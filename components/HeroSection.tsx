@@ -85,10 +85,13 @@ export default function HeroSection() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <button className="bg-primary-600 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg font-medium hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center shadow-lg whitespace-nowrap">
+              <a 
+                href="/quote" 
+                className="bg-primary-600 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg font-medium hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center shadow-lg whitespace-nowrap"
+              >
                 {t('hero.contact')}
                 <ArrowRight size={20} className="ml-2" />
-              </button>
+              </a>
               <button className="border-2 border-white/30 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg font-medium hover:bg-white/10 backdrop-blur-sm transition-all duration-200 flex items-center justify-center whitespace-nowrap">
                 <PlayCircle size={20} className="mr-2" />
                 {t('hero.video')}

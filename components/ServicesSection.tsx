@@ -85,10 +85,13 @@ export default function ServicesSection() {
               </ul>
 
               {/* CTA */}
-              <button className="text-primary-600 font-medium flex items-center group-hover:text-primary-700 transition-colors">
+              <Link 
+                href={`/services#${service.id}`} 
+                className="text-primary-600 font-medium flex items-center group-hover:text-primary-700 transition-colors"
+              >
                 {t('services.details')}
                 <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
             </div>
           ))}
         </div>

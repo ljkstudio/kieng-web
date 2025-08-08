@@ -10,12 +10,12 @@ export default function Navigation() {
   const { language, setLanguage, t } = useLanguage()
 
   const menuItems = [
-    { name: t('nav.home'), href: '#home' },
-    { name: t('nav.about'), href: '#about' },
-    { name: t('nav.services'), href: '#services' },
-    { name: t('nav.products'), href: '#products' },
+    { name: t('nav.home'), href: '/' },
+    { name: t('nav.about'), href: '/about' },
+    { name: t('nav.services'), href: '/services' },
+    { name: t('nav.products'), href: '/products' },
     { name: t('portfolio.badge'), href: '/portfolio' },
-    { name: t('nav.contact'), href: '#contact' },
+    { name: t('nav.contact'), href: '/contact' },
   ]
 
   const toggleLanguage = () => {
@@ -29,13 +29,13 @@ export default function Navigation() {
         <div className="container-custom">
           <div className="flex justify-between items-center text-xs">
             <div className="flex items-center space-x-4 lg:space-x-6">
-              <div className="flex items-center space-x-2">
-                <Phone size={12} />
-                <span className="hidden sm:inline">031-987-7890</span>
-              </div>
+                              <div className="flex items-center space-x-2">
+                  <Phone size={12} />
+                  <span className="hidden sm:inline">031-987-6127</span>
+                </div>
               <div className="flex items-center space-x-2">
                 <Mail size={12} />
-                <span className="hidden sm:inline">info@kieng.co.kr</span>
+                <span className="hidden sm:inline">bhkim@kieng.co.kr</span>
               </div>
             </div>
             <div className="hidden md:block">
@@ -87,9 +87,9 @@ export default function Navigation() {
                 <span className="font-medium text-sm">{language === 'ko' ? 'EN' : 'KO'}</span>
               </button>
               
-              <button className="btn-primary whitespace-nowrap text-sm">
+              <Link href="/quote" className="btn-primary whitespace-nowrap text-sm">
                 {t('nav.quote')}
-              </button>
+              </Link>
             </div>
 
             {/* Mobile menu button - show on medium and smaller screens when desktop menu is hidden */}
@@ -138,9 +138,9 @@ export default function Navigation() {
                   <span className="font-medium text-sm">{language === 'ko' ? 'English' : '한국어'}</span>
                 </button>
                 
-                <button className="btn-primary mt-3 text-sm">
+                <Link href="/quote" className="btn-primary mt-3 text-sm" onClick={() => setIsMenuOpen(false)}>
                   {t('nav.quote')}
-                </button>
+                </Link>
               </div>
             </div>
           )}

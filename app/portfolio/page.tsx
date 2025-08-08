@@ -19,18 +19,18 @@ interface Project {
 }
 
 // 실제 프로젝트 데이터 (2025년 최신 데이터 기준)
-const projects: Project[] = [
+const getProjects = (t: (key: string) => string): Project[] => [
   {
     id: 1,
     title: 'Goseong Combined Natural Gas Power Plant',
     client: 'Mitsubishi Power, Ltd. / Hyundai Engineering Co., Ltd.',
     period: '2025',
     category: 'env',
-    description: '고성 복합천연가스발전소의 소음기 및 필터 시스템 구축 프로젝트',
+    description: t('portfolio.project.goseong.desc'),
     achievements: [
-      '40인치~2인치 규모의 대형 소음기 5세트 제조',
-      'ID3200X9150L, ID2200X4040L 등 다양한 규격 소음기 설계',
-      '발전소 환경 소음 기준 충족 및 안정성 확보'
+      t('portfolio.project.goseong.achievement1'),
+      t('portfolio.project.goseong.achievement2'),
+      t('portfolio.project.goseong.achievement3')
     ],
     image: '/images/20240926_160317.jpg',
     gallery: [
@@ -45,11 +45,11 @@ const projects: Project[] = [
     client: 'KDHEC / Byucksan Engineering Co., Ltd.',
     period: '2025',
     category: 'env',
-    description: '안동 복합화력발전소 2호기의 배기 소음기 및 구조물 시스템',
+    description: t('portfolio.project.andong.desc'),
     achievements: [
-      '14인치 규모의 배기 소음기 설계 및 제조',
-      'OD1853 X7270L 대형 소음기 제작',
-      '6m X 6m x 25m 규모의 구조물 구축'
+      t('portfolio.project.andong.achievement1'),
+      t('portfolio.project.andong.achievement2'),
+      t('portfolio.project.andong.achievement3')
     ],
     image: '/images/20241123_112308.jpg',
     gallery: [
@@ -64,11 +64,11 @@ const projects: Project[] = [
     client: 'STI Co., Ltd. / Jeil E&S Co., Ltd.',
     period: '2025',
     category: 'tank',
-    description: 'SK하이닉스 폐기물 저장탱크 시스템 구축',
+    description: t('portfolio.project.waste.tank.desc'),
     achievements: [
-      'W2062 X D1262 X 4300L 규모의 저장탱크 3세트 제조',
-      '1인치~18인치 배관 시스템 구축',
-      'SS275 재질의 내식성 확보'
+      t('portfolio.project.waste.tank.achievement1'),
+      t('portfolio.project.waste.tank.achievement2'),
+      t('portfolio.project.waste.tank.achievement3')
     ],
     image: '/images/20241206_101625.jpg',
     gallery: [
@@ -83,11 +83,11 @@ const projects: Project[] = [
     client: 'Korea Engineering Co., Ltd. / Seoul Machinery Co., Ltd.',
     period: '2025',
     category: 'env',
-    description: '클린나라 청주 소각시설 소음기 시스템',
+    description: t('portfolio.project.kleannara.desc'),
     achievements: [
-      'OD1400 X 3450L 규모의 소음기 제조',
-      'A516-60 재질 적용으로 내구성 확보',
-      '2인치~8인치 배관 시스템 구축'
+      t('portfolio.project.kleannara.achievement1'),
+      t('portfolio.project.kleannara.achievement2'),
+      t('portfolio.project.kleannara.achievement3')
     ],
     image: '/images/20240826_161127.jpg',
     gallery: [
@@ -102,11 +102,11 @@ const projects: Project[] = [
     client: 'Coastal Power Co., Ltd. / NSV Co., Ltd.',
     period: '2024',
     category: 'env',
-    description: '부평 데이터센터 디젤발전기 배기 소음기 시스템',
+    description: t('portfolio.project.datacenter.desc'),
     achievements: [
-      '750A, 500A 규모의 배기 소음기 2세트 제조',
-      'OD1800x4500TL, OD1500x3200TL 대형 소음기 설계',
-      '데이터센터 소음 기준 충족'
+      t('portfolio.project.datacenter.achievement1'),
+      t('portfolio.project.datacenter.achievement2'),
+      t('portfolio.project.datacenter.achievement3')
     ],
     image: '/images/20240801_160058.jpg',
     gallery: [
@@ -121,11 +121,11 @@ const projects: Project[] = [
     client: 'Doosan Enerbility Co., Ltd. / Valmax Technology Corporation',
     period: '2024',
     category: 'tank',
-    description: '카자흐스탄 터키스탄 복합화력발전소 응축수 배수탱크',
+    description: t('portfolio.project.turkistan.desc'),
     achievements: [
-      'GOST 표준 적용한 응축수 배수탱크 5세트 제조',
-      'A516-70 재질의 고품질 탱크 제작',
-      '해외 프로젝트 성공적 수행'
+      t('portfolio.project.turkistan.achievement1'),
+      t('portfolio.project.turkistan.achievement2'),
+      t('portfolio.project.turkistan.achievement3')
     ],
     image: '/images/20240709_080853.jpg',
     gallery: [
@@ -140,11 +140,11 @@ const projects: Project[] = [
     client: 'IPEG ENG, Ltd.',
     period: '2024',
     category: 'filter',
-    description: '재생 그린오일 경질 나프타 코알레서 및 중질유 필터',
+    description: t('portfolio.project.rgo.desc'),
     achievements: [
-      'ID1600x1500TL, ID14"x1800TL 규모의 필터 시스템',
-      '경질 나프타 코알레서 및 중질유 필터 4세트 제조',
-      'A516-70 재질의 고성능 필터 설계'
+      t('portfolio.project.rgo.achievement1'),
+      t('portfolio.project.rgo.achievement2'),
+      t('portfolio.project.rgo.achievement3')
     ],
     image: '/images/20240613_134705.jpg',
     gallery: [
@@ -159,11 +159,11 @@ const projects: Project[] = [
     client: 'Doosan Enerbility Co., Ltd. / ENK Engineering Co., Ltd.',
     period: '2023',
     category: 'filter',
-    description: '사우디아라비아 슈아이바 3 독립수처리 시설 도너 로딩 필터',
+    description: t('portfolio.project.shuaibah.desc'),
     achievements: [
-      '316SS 재질의 고급 필터 시스템 구축',
-      'ID3"x300TLx2Set 규모의 필터 제조',
-      '해외 대형 프로젝트 성공적 수행'
+      t('portfolio.project.shuaibah.achievement1'),
+      t('portfolio.project.shuaibah.achievement2'),
+      t('portfolio.project.shuaibah.achievement3')
     ],
     image: '/images/20240511_090756.jpg',
     gallery: [
@@ -178,11 +178,11 @@ const projects: Project[] = [
     client: 'Doosan Enerbility Co., Ltd. / Valmax Technology Corporation',
     period: '2023',
     category: 'tank',
-    description: '사우디아라비아 자프라 가스공급시스템 응축수 배수탱크',
+    description: t('portfolio.project.jafurah.desc'),
     achievements: [
-      '9T/17T 규모의 응축수 배수탱크 제조',
-      'A516-70 재질의 고품질 탱크 설계',
-      '사우디아라비아 ARAMCO 프로젝트 수행'
+      t('portfolio.project.jafurah.achievement1'),
+      t('portfolio.project.jafurah.achievement2'),
+      t('portfolio.project.jafurah.achievement3')
     ],
     image: '/images/20240419_110111.jpg',
     gallery: [
@@ -197,11 +197,11 @@ const projects: Project[] = [
     client: 'Wintec Glovis. Co., Ltd.',
     period: '2023',
     category: 'env',
-    description: '대구광역시 활성탄 재생시설 호퍼 및 구조물',
+    description: t('portfolio.project.activated.carbon.desc'),
     achievements: [
-      'ID1200x1000TL 규모의 호퍼 6세트 제조',
-      'A240-304 재질의 고급 호퍼 시스템',
-      '환경시설 소음기 및 구조물 구축'
+      t('portfolio.project.activated.carbon.achievement1'),
+      t('portfolio.project.activated.carbon.achievement2'),
+      t('portfolio.project.activated.carbon.achievement3')
     ],
     image: '/images/20240413_115839.jpg',
     gallery: [
@@ -216,11 +216,11 @@ const projects: Project[] = [
     client: 'Samsung C&T Corporation',
     period: '2023',
     category: 'env',
-    description: '방글라데시 메그나가트 718MW 복합화력발전소 스팀 블로우아웃 소음기',
+    description: t('portfolio.project.bangladesh.desc'),
     achievements: [
-      '24인치 규모의 대형 스팀 블로우아웃 소음기 제조',
-      'ID3000x9000TL 규모의 소음기 설계',
-      '9T/17T/18.5Tons 규모의 대형 소음기 시스템'
+      t('portfolio.project.bangladesh.achievement1'),
+      t('portfolio.project.bangladesh.achievement2'),
+      t('portfolio.project.bangladesh.achievement3')
     ],
     image: '/images/20240320_153627.jpg',
     gallery: [
@@ -235,11 +235,11 @@ const projects: Project[] = [
     client: 'NSV Co., Ltd.',
     period: '2023',
     category: 'env',
-    description: '포스코 포항 3, 4호 고로 스택 소음기 유지보수',
+    description: t('portfolio.project.posco.desc'),
     achievements: [
-      'OD3009x13297L 규모의 대형 스택 소음기 2세트',
-      '15.5톤 규모의 대형 소음기 시스템',
-      '기존 시설 유지보수 및 성능 개선'
+      t('portfolio.project.posco.achievement1'),
+      t('portfolio.project.posco.achievement2'),
+      t('portfolio.project.posco.achievement3')
     ],
     image: '/images/20240221_092509.jpg',
     gallery: [
@@ -260,6 +260,7 @@ export default function PortfolioPage() {
   const [visibleImages, setVisibleImages] = useState<Array<{src: string, year: string, category: string}>>([])
   const [isLoading, setIsLoading] = useState(false)
 
+  const projects = getProjects(t)
   const filteredProjects = selectedCategory === 'all' 
     ? projects 
     : projects.filter(project => project.category === selectedCategory)
@@ -403,10 +404,10 @@ export default function PortfolioPage() {
   }, [visibleImages, galleryImages])
 
   const galleryFilters = [
-    { key: 'all', label: '전체' },
-    { key: 'filter', label: '필터' },
-    { key: 'tank', label: '탱크' },
-    { key: 'env', label: '환경' }
+    { key: 'all', label: t('portfolio.gallery.filter.all') },
+    { key: 'filter', label: t('portfolio.gallery.filter.filter') },
+    { key: 'tank', label: t('portfolio.gallery.filter.tank') },
+    { key: 'env', label: t('portfolio.gallery.filter.env') }
   ]
 
   return (
@@ -550,9 +551,9 @@ export default function PortfolioPage() {
           {/* Gallery Stats */}
           <div className="text-center mb-8">
             <p className="text-gray-600">
-              총 <span className="font-semibold text-blue-600">{galleryImages.length}</span>개의 작업사진
+              {t('portfolio.gallery.stats.total')} <span className="font-semibold text-blue-600">{galleryImages.length}</span>{t('portfolio.gallery.stats.images')}
               {galleryFilter !== 'all' && (
-                <span> • {galleryFilters.find(f => f.key === galleryFilter)?.label} 분야</span>
+                <span> • {galleryFilters.find(f => f.key === galleryFilter)?.label} {t('portfolio.gallery.stats.category')}</span>
               )}
             </p>
           </div>
@@ -591,7 +592,7 @@ export default function PortfolioPage() {
                 disabled={isLoading}
                 className="px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isLoading ? '로딩 중...' : '더 보기'}
+                {isLoading ? t('portfolio.gallery.loading') : t('portfolio.gallery.load.more')}
               </button>
             </div>
           )}
@@ -660,7 +661,7 @@ export default function PortfolioPage() {
                   </ul>
 
                   <div className="mt-8">
-                    <h3 className="font-semibold text-gray-900 mb-4">갤러리</h3>
+                    <h3 className="font-semibold text-gray-900 mb-4">{t('portfolio.gallery.title.modal')}</h3>
                     <div className="grid grid-cols-3 gap-2">
                       {selectedProject.gallery.map((image, index) => (
                         <div

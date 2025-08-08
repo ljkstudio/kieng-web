@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Send, User, Smartphone } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function ContactSection() {
@@ -32,13 +32,13 @@ export default function ContactSection() {
     {
       icon: Phone,
       title: t('contact.phone'),
-      details: ['031-987-7890', 'Fax: 031-987-7891'],
+      details: ['031-987-6127', 'Fax: 031-988-6128'],
       color: 'bg-primary-500'
     },
     {
       icon: Mail,
       title: t('contact.email'),
-      details: ['info@kieng.co.kr', 'sales@kieng.co.kr'],
+      details: ['bhkim@kieng.co.kr', 'sales@kieng.co.kr'],
       color: 'bg-accent-500'
     },
     {
@@ -52,6 +52,18 @@ export default function ContactSection() {
       title: t('contact.size'),
       details: ['Total 2,244㎡', 'Factory 495㎡ / Yard 660㎡'],
       color: 'bg-primary-700'
+    },
+    {
+      icon: User,
+      title: t('contact.info.contactPerson.title'),
+      details: [t('contact.info.contactPerson.value')],
+      color: 'bg-secondary-500'
+    },
+    {
+      icon: Smartphone,
+      title: t('contact.info.mobile.title'),
+      details: [t('contact.info.mobile.value')],
+      color: 'bg-accent-600'
     }
   ]
 

@@ -2,16 +2,17 @@
 
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Youtube } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import Link from 'next/link'
 
 export default function Footer() {
   const { t } = useLanguage()
   const currentYear = new Date().getFullYear()
 
   const quickLinks = [
-    { name: t('nav.about'), href: '#about' },
-    { name: t('nav.services'), href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: t('nav.contact'), href: '#contact' },
+    { name: t('nav.about'), href: '/about' },
+    { name: t('nav.services'), href: '/services' },
+    { name: t('footer.projects'), href: '/portfolio' },
+    { name: t('nav.contact'), href: '/contact' },
   ]
 
   const services = [
@@ -36,7 +37,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="text-2xl font-bold text-primary-400 mb-4">
-              경인엔지니어링
+              {t('footer.company.name')}
             </div>
             <p className="text-secondary-300 mb-6 leading-relaxed">
               {t('footer.company.desc')}
@@ -46,15 +47,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone size={18} className="text-primary-400" />
-                <span className="text-secondary-300">031-987-7890</span>
+                <span className="text-secondary-300">{t('footer.phone')}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={18} className="text-primary-400" />
-                <span className="text-secondary-300">info@kieng.co.kr</span>
+                <span className="text-secondary-300">{t('footer.email')}</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin size={18} className="text-primary-400 mt-1" />
-                <span className="text-secondary-300">경기도 김포시 대곶면 대곶로382번길 122</span>
+                <span className="text-secondary-300">{t('footer.address')}</span>
               </div>
             </div>
           </div>
@@ -127,15 +128,15 @@ export default function Footer() {
               <p>&copy; {currentYear} {t('footer.copyright')}</p>
             </div>
             <div className="flex space-x-6">
-              <a href="#" className="hover:text-primary-400 transition-colors">
+              <Link href="/privacy" className="hover:text-primary-400 transition-colors">
                 {t('footer.privacy')}
-              </a>
-              <a href="#" className="hover:text-primary-400 transition-colors">
+              </Link>
+              <Link href="/terms" className="hover:text-primary-400 transition-colors">
                 {t('footer.terms')}
-              </a>
-              <a href="#" className="hover:text-primary-400 transition-colors">
+              </Link>
+              <Link href="/sitemap" className="hover:text-primary-400 transition-colors">
                 {t('footer.sitemap')}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
