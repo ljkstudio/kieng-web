@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Menu, X, Phone, Mail, Globe } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import Link from 'next/link'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -13,6 +14,7 @@ export default function Navigation() {
     { name: t('nav.about'), href: '#about' },
     { name: t('nav.services'), href: '#services' },
     { name: t('nav.products'), href: '#products' },
+    { name: t('portfolio.badge'), href: '/portfolio' },
     { name: t('nav.contact'), href: '#contact' },
   ]
 
@@ -57,13 +59,23 @@ export default function Navigation() {
             {/* Desktop menu */}
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
               {menuItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-secondary-700 hover:text-primary-600 font-medium transition-colors duration-200 whitespace-nowrap text-sm"
-                >
-                  {item.name}
-                </a>
+                item.href.startsWith('/') ? (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="text-secondary-700 hover:text-primary-600 font-medium transition-colors duration-200 whitespace-nowrap text-sm"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="text-secondary-700 hover:text-primary-600 font-medium transition-colors duration-200 whitespace-nowrap text-sm"
+                  >
+                    {item.name}
+                  </a>
+                )
               ))}
               
               {/* Language Switcher */}
@@ -96,14 +108,25 @@ export default function Navigation() {
             <div className="lg:hidden border-t border-secondary-200 py-3">
               <div className="flex flex-col space-y-3">
                 {menuItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="text-secondary-700 hover:text-primary-600 font-medium py-1 text-sm"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </a>
+                  item.href.startsWith('/') ? (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="text-secondary-700 hover:text-primary-600 font-medium py-1 text-sm"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="text-secondary-700 hover:text-primary-600 font-medium py-1 text-sm"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                  )
                 ))}
                 
                 {/* Mobile Language Switcher */}

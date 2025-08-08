@@ -2,6 +2,7 @@
 
 import { Wrench, Cog, Cpu, Factory, ArrowRight, CheckCircle } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import Link from 'next/link'
 
 export default function ServicesSection() {
   const { t } = useLanguage()
@@ -104,9 +105,9 @@ export default function ServicesSection() {
             <button className="bg-white text-primary-600 px-8 py-3 rounded-lg font-medium hover:bg-primary-50 transition-colors">
               {t('services.cta.consult')}
             </button>
-            <button className="border-2 border-primary-200 text-white px-8 py-3 rounded-lg font-medium hover:bg-primary-500 transition-colors">
+            <Link href="/portfolio" className="border-2 border-primary-200 text-white px-8 py-3 rounded-lg font-medium hover:bg-primary-500 transition-colors inline-block">
               {t('services.cta.portfolio')}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
