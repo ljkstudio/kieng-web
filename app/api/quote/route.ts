@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
 
 export async function POST(request: NextRequest) {
   try {
@@ -26,26 +25,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // 견적 요청 생성
-    const quoteRequest = await prisma.quoteRequest.create({
-      data: {
-        name,
-        company,
-        email,
-        phone,
-        productType,
-        quantity,
-        specifications,
-        deadline: deadline || null,
-        budget: budget || null,
-        additionalInfo: additionalInfo || null,
-      }
-    })
-
+    // 임시로 성공 응답만 반환 (데이터베이스 연동 전)
     return NextResponse.json(
       { 
         message: '견적 요청이 성공적으로 접수되었습니다.',
-        id: quoteRequest.id 
+        id: Date.now() // 임시 ID
       },
       { status: 201 }
     )
@@ -60,13 +44,8 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
-    const quoteRequests = await prisma.quoteRequest.findMany({
-      orderBy: {
-        createdAt: 'desc'
-      }
-    })
-
-    return NextResponse.json(quoteRequests)
+    // 임시로 빈 배열 반환
+    return NextResponse.json([])
   } catch (error) {
     console.error('Get quote requests error:', error)
     return NextResponse.json(
