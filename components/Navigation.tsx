@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Menu, X, Phone, Mail, Globe } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import Link from 'next/link'
+import Logo from './Logo'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -51,9 +52,7 @@ export default function Navigation() {
           <div className="flex justify-between items-center py-3">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="text-lg lg:text-xl font-bold text-primary-600 whitespace-nowrap">
-                {language === 'ko' ? '경인엔지니어링' : 'KYOUNGIN ENG.'}
-              </div>
+              <Logo size="md" />
             </div>
 
             {/* Desktop menu */}

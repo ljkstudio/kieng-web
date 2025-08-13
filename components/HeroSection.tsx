@@ -3,6 +3,7 @@
 import { ArrowRight, PlayCircle, Settings, Zap, Shield } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useEffect, useRef } from 'react'
+import Logo from './Logo'
 
 export default function HeroSection() {
   const { t } = useLanguage()
@@ -68,6 +69,8 @@ export default function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left animate-slide-up">
+
+            
             <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-6 border border-white/30">
               <Zap size={16} className="mr-2" />
               {t('hero.badge')}

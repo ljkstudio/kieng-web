@@ -3,6 +3,7 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Youtube } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import Link from 'next/link'
+import Logo from './Logo'
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -36,8 +37,8 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="text-2xl font-bold text-primary-400 mb-4">
-              {t('footer.company.name')}
+            <div className="mb-4">
+              <Logo size="lg" className="text-white" />
             </div>
             <p className="text-secondary-300 mb-6 leading-relaxed">
               {t('footer.company.desc')}

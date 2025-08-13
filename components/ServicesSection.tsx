@@ -3,6 +3,7 @@
 import { Wrench, Cog, Cpu, Factory, ArrowRight, CheckCircle, Droplets } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import Link from 'next/link'
+import Logo from './Logo'
 
 export default function ServicesSection() {
   const { t } = useLanguage()
@@ -39,6 +40,11 @@ export default function ServicesSection() {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16">
+          {/* Logo */}
+          <div className="mb-6 flex justify-center">
+            <Logo size="md" />
+          </div>
+          
           <div className="inline-flex items-center px-4 py-2 bg-primary-100 rounded-full text-primary-700 text-sm font-medium mb-4">
             {t('services.badge')}
           </div>

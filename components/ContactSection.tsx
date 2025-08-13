@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Phone, Mail, MapPin, Clock, Send, User, Smartphone } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import Logo from './Logo'
 
 export default function ContactSection() {
   const { t } = useLanguage()
@@ -72,6 +73,11 @@ export default function ContactSection() {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16">
+          {/* Logo */}
+          <div className="mb-6 flex justify-center">
+            <Logo size="md" />
+          </div>
+          
           <div className="inline-flex items-center px-4 py-2 bg-primary-100 rounded-full text-primary-700 text-sm font-medium mb-4">
             {t('contact.badge')}
           </div>

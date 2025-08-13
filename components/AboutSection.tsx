@@ -2,6 +2,7 @@
 
 import { Award, Users, Target, Globe } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import Logo from './Logo'
 
 export default function AboutSection() {
   const { t } = useLanguage()
@@ -35,6 +36,11 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <div>
+            {/* Logo */}
+            <div className="mb-6 flex justify-center lg:justify-start">
+              <Logo size="md" />
+            </div>
+            
             <div className="inline-flex items-center px-4 py-2 bg-primary-100 rounded-full text-primary-700 text-sm font-medium mb-6">
               {t('about.badge')}
             </div>
