@@ -415,21 +415,42 @@ export default function PortfolioPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div className="container mx-auto px-4">
+      <section className="relative min-h-[90vh] text-white overflow-hidden flex items-center justify-center">
+        {/* Video Background */}
+        <video
+          autoPlay={true}
+          muted={true}
+          loop={true}
+          playsInline={true}
+          controls={false}
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectFit: 'cover' }}
+        >
+          <source src="/videos/kieng_video2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Video Overlay */}
+        <div className="absolute inset-0 bg-black/50"></div>
+        
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-10 pt-20">
           <div className="text-center">
-            <span className="inline-block bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
               {t('portfolio.badge')}
             </span>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-8 drop-shadow-lg">
               {t('portfolio.title')}
             </h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto drop-shadow-md">
               {t('portfolio.subtitle')}
             </p>
           </div>
         </div>
       </section>
+
+
 
       {/* Projects Section */}
       <section className="py-16">
