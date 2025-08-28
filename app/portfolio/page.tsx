@@ -415,40 +415,159 @@ export default function PortfolioPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] text-white overflow-hidden flex items-center justify-center">
-        {/* Video Background */}
-        <video
-          autoPlay={true}
-          muted={true}
-          loop={true}
-          playsInline={true}
-          controls={false}
-          preload="metadata"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectFit: 'cover' }}
-        >
-          <source src="/videos/kieng_video2.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        
-        {/* Video Overlay */}
-        <div className="absolute inset-0 bg-black/50"></div>
-        
-        {/* Content */}
-        <div className="container mx-auto px-4 relative z-10 pt-20">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+        <div className="container mx-auto px-4">
           <div className="text-center">
-            <span className="inline-block bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <span className="inline-block bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
               {t('portfolio.badge')}
             </span>
-            <h1 className="text-4xl md:text-6xl font-bold mb-8 drop-shadow-lg">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
               {t('portfolio.title')}
             </h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto drop-shadow-md">
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               {t('portfolio.subtitle')}
             </p>
           </div>
         </div>
       </section>
+
+             {/* Video Player Section */}
+       <section id="video-section" className="py-16 md:py-20 bg-gray-50">
+         <div className="container mx-auto px-4">
+           {/* Project Info - Left Side on Desktop, Top on Mobile */}
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-12">
+             {/* Project Details */}
+             <div className="order-2 lg:order-1">
+               <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                   Project : DCK Data Center Silencer
+                 </h2>
+                 <div className="space-y-4">
+                   <div className="flex flex-col sm:flex-row sm:items-center">
+                     <span className="font-semibold text-gray-700 min-w-[80px] sm:min-w-[100px]">Owner :</span>
+                     <span className="text-gray-900 mt-1 sm:mt-0">DCK Data Craft Korea</span>
+                   </div>
+                   <div className="flex flex-col sm:flex-row sm:items-center">
+                     <span className="font-semibold text-gray-700 min-w-[80px] sm:min-w-[100px]">Item :</span>
+                     <span className="text-gray-900 mt-1 sm:mt-0">Exhaust Silencer</span>
+                   </div>
+                   <div className="flex flex-col sm:flex-row sm:items-center">
+                     <span className="font-semibold text-gray-700 min-w-[80px] sm:min-w-[100px]">Year :</span>
+                     <span className="text-gray-900 mt-1 sm:mt-0">2024</span>
+                   </div>
+                   <div className="pt-2">
+                     <span className="font-semibold text-gray-700 block mb-3">Item Spec :</span>
+                     <div className="space-y-2 text-gray-900">
+                       <p className="text-sm md:text-base">OD1200 X 3200TL x 9sets</p>
+                       <p className="text-sm md:text-base">OD1500 X 3200TL x 4sets</p>
+                       <p className="text-sm md:text-base">OD1800 X 4500TL x 4sets</p>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             
+             {/* Video Player - Right Side on Desktop, Top on Mobile */}
+             <div className="order-1 lg:order-2">
+               <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl">
+                 <video
+                   id="portfolio-video"
+                   className="w-full h-auto"
+                   preload="metadata"
+                   poster="/images/20240926_160317.jpg"
+                 >
+                   <source src="/videos/kieng_video2.mp4" type="video/mp4" />
+                   Your browser does not support the video tag.
+                 </video>
+                 
+                 {/* Custom Video Controls */}
+                 <div id="video-controls" className="absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-300">
+                   <button
+                     id="play-button"
+                     className="bg-white/90 hover:bg-white text-gray-900 rounded-full p-4 md:p-6 shadow-lg transition-all duration-300 hover:scale-110"
+                     onClick={() => {
+                       const video = document.getElementById('portfolio-video') as HTMLVideoElement;
+                       const controls = document.getElementById('video-controls') as HTMLDivElement;
+                       const playButton = document.getElementById('play-button') as HTMLButtonElement;
+                       
+                       if (video && controls && playButton) {
+                         if (video.paused) {
+                           video.play().then(() => {
+                             video.muted = false; // 소리 활성화
+                             controls.style.opacity = '0';
+                             setTimeout(() => {
+                               controls.style.display = 'none';
+                             }, 300);
+                           }).catch(err => {
+                             console.log('Video play failed:', err);
+                           });
+                         } else {
+                           video.pause();
+                           controls.style.display = 'flex';
+                           controls.style.opacity = '1';
+                           playButton.innerHTML = `
+                             <svg class="w-8 h-8 md:w-12 md:h-12" fill="currentColor" viewBox="0 0 20 20">
+                               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
+                             </svg>
+                           `;
+                         }
+                       }
+                     }}
+                   >
+                     <svg className="w-8 h-8 md:w-12 md:h-12" fill="currentColor" viewBox="0 0 20 20">
+                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd"></path>
+                     </svg>
+                   </button>
+                 </div>
+                 
+                 {/* Video Progress Bar */}
+                 <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-3 md:p-4">
+                   <div className="flex items-center space-x-3 md:space-x-4">
+                     <button
+                       id="mute-button"
+                       className="text-white hover:text-gray-300 transition-colors flex-shrink-0"
+                       onClick={() => {
+                         const video = document.getElementById('portfolio-video') as HTMLVideoElement;
+                         const muteButton = document.getElementById('mute-button') as HTMLButtonElement;
+                         
+                         if (video && muteButton) {
+                           video.muted = !video.muted;
+                           // 음소거 상태에 따라 아이콘 변경
+                           if (video.muted) {
+                             muteButton.innerHTML = `
+                               <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 20 20">
+                                 <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.414 0zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                               </svg>
+                             `;
+                           } else {
+                             muteButton.innerHTML = `
+                               <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 20 20">
+                                 <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.414 0zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                               </svg>
+                             `;
+                           }
+                         }
+                       }}
+                     >
+                       <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 20 20">
+                         <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.414 0zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                       </svg>
+                     </button>
+                     
+                     <div className="flex-1 bg-gray-600 rounded-full h-2">
+                       <div className="bg-blue-500 h-2 rounded-full transition-all duration-100" style={{width: '0%'}}></div>
+                     </div>
+                     
+                     <span className="text-white text-xs md:text-sm font-mono flex-shrink-0">
+                       <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+                     </span>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
 
 
 

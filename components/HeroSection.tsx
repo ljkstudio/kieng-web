@@ -3,10 +3,12 @@
 import { ArrowRight, PlayCircle, Settings, Zap, Shield } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import Logo from './Logo'
 
 export default function HeroSection() {
   const { t } = useLanguage()
+  const router = useRouter()
   const videoRef = useRef<HTMLVideoElement>(null)
   
   useEffect(() => {
@@ -95,7 +97,10 @@ export default function HeroSection() {
                 {t('hero.contact')}
                 <ArrowRight size={20} className="ml-2" />
               </a>
-              <button className="border-2 border-white/30 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg font-medium hover:bg-white/10 backdrop-blur-sm transition-all duration-200 flex items-center justify-center whitespace-nowrap">
+              <button 
+                onClick={() => router.push('/portfolio#video-section')}
+                className="border-2 border-white/30 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg font-medium hover:bg-white/10 backdrop-blur-sm transition-all duration-200 flex items-center justify-center whitespace-nowrap"
+              >
                 <PlayCircle size={20} className="mr-2" />
                 {t('hero.video')}
               </button>
